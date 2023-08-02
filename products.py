@@ -1,4 +1,26 @@
+import os # operating system
+
 products = []
+
+if os.path.isfile('products.csv') : # .是指中文 的 的意思
+	print('yeah! 找到檔案了')
+	with open ('products.csv', 'r', encoding = 'utf-8')as f :
+		for line in f : #因為讀取檔案室一行一行讀，所以取作line
+			name, price = line.strip().split(',') # strip可以去除空格與換行字 # split適用於分割內容的()括號中寫上從哪分割
+			products.append([name, price])
+	print(products)
+else :
+	print('找不到檔案....')
+
+
+
+with open ('products.csv', 'r', encoding = 'utf-8')as f :
+	for line in f : #因為讀取檔案室一行一行讀，所以取作line
+		name, price = line.strip().split(',') # strip可以去除空格與換行字 # split適用於分割內容的()括號中寫上從哪分割
+		products.append([name, price])
+		print(products)
+
+
 while True :
 	name = input('請輸入商品名稱: ')
 	if name == 'q' :
@@ -7,8 +29,7 @@ while True :
 	price = int(price)
 	if price == 'q' :
 		break
-	p = [name, price]
-	products.append(p)
+	products.append([name, price])
 print(products)
 
 products[0][0] #大清單的第0個中的第0格清單
